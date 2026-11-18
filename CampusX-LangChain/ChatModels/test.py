@@ -4,7 +4,13 @@ from langchain_groq import ChatGroq
 
 load_dotenv()
 
-llm_groq=ChatGroq(model="openai/gpt-oss-120b",temperature=0.5,max_tokens=150)
+llm_groq=ChatGroq(model="openai/gpt-oss-120b",temperature=1.8)
 
-result=llm_groq.invoke("Make a 5-word line on cars")
-print(result.content)
+while(True):
+    user=input("Enter your query,Type exit to exit the chatbot \n")
+    if(user.lower() == 'exit'):
+        print("Thank you, have a nice day")
+        break
+    else:
+        result=llm_groq.invoke(user)
+        print(result.content)
